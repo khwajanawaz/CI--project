@@ -1,0 +1,14 @@
+# --- user / shell files ---
+.bash_logout
+.bash_profile
+.bashrc
+.cshrc
+.tcshrc
+.gitconfig
+.lesshst
+
+# --- ssh (security) ---
+.ssh/
+
+# --- allow project ---
+!ci-project/

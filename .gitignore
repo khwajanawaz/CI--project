@@ -6,7 +6,7 @@
 .tcshrc
 .gitconfig
 .lesshst
-
+.viminfo
 # --- ssh (security) ---
 .ssh/
 

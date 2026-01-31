@@ -1,25 +1,30 @@
 pipeline {
     agent any
 
-    environment {
-        PATH = "/opt/maven/bin:$PATH"
-    }
-
     stages {
-
-        stage("build") {
+        stage("Build") {
             steps {
                 echo "----------- build started ----------"
-                sh 'mvn clean deploy -Dmaven.test.skip=true'
+                sh 'mvn -v'
+                sh 'mvn clean package -DskipTests'
                 echo "----------- build completed ----------"
             }
         }
 
-        stage("test") {
+        stage("Test") {
             steps {
                 echo "----------- unit test started ----------"
-                sh 'mvn surefire-report:report'
+                sh 'mvn test'
+                sh 'mvn surefire-report:report || true'
                 echo "----------- unit test completed ----------"
             }
         }
+    }
+
+    post {
+        always {
+            echo "Build finished: ${currentBuild.currentResult}"
         }
+    }
+}
+

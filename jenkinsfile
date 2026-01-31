@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-         PATH = "/usr/share/maven/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        PATH = "/opt/maven/bin:$PATH"
     }
 
     stages {
@@ -21,4 +21,5 @@ pipeline {
                 sh 'mvn surefire-report:report'
                 echo "----------- unit test completed ----------"
             }
+        }
         }
